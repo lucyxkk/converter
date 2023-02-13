@@ -1,20 +1,21 @@
-const button1 = document.getElementById("button1");
-const button2 = document.getElementById("button2");
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 
-button1.addEventListener("click", convert1);
+input1.addEventListener("input", handleInput1);
 
-function convert1() {
-  const num = input1.value;
-  let result = num * 2;
+input2.addEventListener("input", handleInput2);
+
+function handleInput1(e) {
+  let result = convert(e);
   input2.value = result;
 }
 
-button2.addEventListener("click", convert2);
-
-function convert2() {
-  const num = input2.value;
-  let result = num * 2;
+function handleInput2(e) {
+  let result = convert(e);
   input1.value = result;
+}
+
+function convert(input) {
+  const num = e.target.value;
+  return input * 2;
 }
