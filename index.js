@@ -6,7 +6,17 @@ input2.addEventListener("input", handleInput);
 
 function handleInput(e) {
   const num = e.target.value;
-  let result = num * 2;
+
+  let result;
+
+  if (num === "") {
+    result = "";
+  } else if (isNaN(num)) {
+    result = "WRONG";
+  } else {
+    result = num * 2;
+  }
+
   if (e.target === input1) {
     input2.value = result;
   } else {
