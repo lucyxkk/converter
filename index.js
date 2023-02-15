@@ -1,3 +1,14 @@
+const p = document.getElementById("rate");
+
+fetch("http://api.nbp.pl/api/exchangerates/rates/a/gbp/")
+  .then((res) => res.json())
+  .then((data) => {
+    rate = data.rates[0].mid;
+    console.log(rate);
+    p.innerHTML = "Today's exchange rate is: " + rate;
+  });
+
+let rate;
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 
@@ -14,7 +25,7 @@ function handleInput(e) {
   } else if (isNaN(num)) {
     result = "WRONG";
   } else {
-    result = num * 2;
+    result = num * rate;
   }
 
   if (e.target === input1) {
