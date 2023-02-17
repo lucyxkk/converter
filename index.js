@@ -12,25 +12,71 @@ let rate;
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 
-input1.addEventListener("input", handleInput);
-input2.addEventListener("input", handleInput);
+// input1.addEventListener("input", handleInput);
+// input2.addEventListener("input", handleInput);
 
-function handleInput(e) {
+// function handleInput(e) {
+//   const num = e.target.value;
+
+//   let result;
+
+//   if (num === "") {
+//     result = "";
+//   } else if (isNaN(num)) {
+//     result = "WRONG";
+//   } else {
+//     result = num * rate;
+//   }
+
+//   if (e.target === input1) {
+//     input2.value = result;
+//   } else {
+//     input1.value = result;
+//   }
+
+input1.addEventListener("input", handleInput1);
+input2.addEventListener("input", handleInput2);
+
+function handleInput1(e) {
   const num = e.target.value;
+  let result1;
+  if (num === "") {
+    result1 = "";
+  } else if (isNaN(num)) {
+    result1 = "WRONG"
+  } else {
+    result1 = num * rate;
+  }
+  
+  if (e.target === input1) {
+    input2.value = result1;
+  } else {
+    input1.value = result2;
+  }
+  
+}
 
-  let result;
+function handleInput2(e) {
+  const num = e.target.value;
+  let result2;
 
   if (num === "") {
-    result = "";
+    result2 = "";
   } else if (isNaN(num)) {
-    result = "WRONG";
+    result2 = "WRONG"
   } else {
-    result = num * rate;
+    result2 = num/rate;
   }
 
   if (e.target === input1) {
-    input2.value = result;
+    input2.value = result1;
   } else {
-    input1.value = result;
+    input1.value = result2;
   }
 }
+
+
+
+
+
+
