@@ -1,6 +1,6 @@
 const p = document.getElementById("rate");
 
-fetch("http://api.nbp.pl/api/exchangerates/rates/a/gbp/")
+fetch("https://api.nbp.pl/api/exchangerates/rates/a/gbp/")
   .then((res) => res.json())
   .then((data) => {
     rate = data.rates[0].mid;
@@ -43,9 +43,15 @@ function handleInput1(e) {
   if (num === "") {
     result1 = "";
   } else if (isNaN(num)) {
-    result1 = "WRONG"
+     result1 = " ";
+     let warning = document.getElementsByClassName(".invalid-input");
+    warning.classList.add(".disappear");
   } else {
     result1 = num * rate;
+    warning.classList.remove(".disappear");
+    warning.classList.add(".warning");
+    warning.classList.add(".invalid");
+
   }
   
   if (e.target === input1) {
