@@ -42,7 +42,7 @@ input{
 .disappear{
    display: none;
 }
-.invalid{
+/* .invalid{
     color: red;
     margin-right: 150px;
     margin-top: -24px;
@@ -53,4 +53,4 @@ input{
     margin-top: 0px;
     width: 16px;
     height: 16px;
-}
+} */

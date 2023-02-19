@@ -43,23 +43,16 @@ function handleInput1(e) {
   if (num === "") {
     result1 = "";
   } else if (isNaN(num)) {
-     result1 = " ";
-     let warning = document.getElementsByClassName(".invalid-input");
-    warning.classList.add(".disappear");
+    result1 = "WRONG";
   } else {
     result1 = num * rate;
-    warning.classList.remove(".disappear");
-    warning.classList.add(".warning");
-    warning.classList.add(".invalid");
-
   }
-  
+
   if (e.target === input1) {
     input2.value = result1;
   } else {
     input1.value = result2;
   }
-  
 }
 
 function handleInput2(e) {
@@ -69,9 +62,9 @@ function handleInput2(e) {
   if (num === "") {
     result2 = "";
   } else if (isNaN(num)) {
-    result2 = "WRONG"
+    result2 = "WRONG";
   } else {
-    result2 = num/rate;
+    result2 = num / rate;
   }
 
   if (e.target === input1) {
@@ -80,9 +73,3 @@ function handleInput2(e) {
     input1.value = result2;
   }
 }
-
-
-
-
-
-
