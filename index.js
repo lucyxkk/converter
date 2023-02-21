@@ -54,7 +54,6 @@ function handleInput1(e) {
     
   } else {
     result1 = num * rate;
-    
   }
 
   if (e.target === input1) {
@@ -72,10 +71,10 @@ function handleInput2(e) {
     result2 = "";
   } else if (isNaN(num)) {
     result2 = "";
-    let warningClass = document.querySelector(".img-warning");
+    let warningClass = document.querySelector(".img-warning2");
     warningClass.classList.remove("disappear");
     warningClass.classList.add("warning");
-    let invalidClass = document.querySelector(".p-invalid");
+    let invalidClass = document.querySelector(".p-invalid2");
     invalidClass.classList.remove("disappear");
     invalidClass.classList.add("invalid");
   } else {
