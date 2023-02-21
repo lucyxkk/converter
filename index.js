@@ -54,8 +54,7 @@ function handleInput1(e) {
     
   } else {
     result1 = num * rate;
-    let disClass = document.querySelector(".invalid-input");
-    disClass.classList.add("disappear");
+    
   }
 
   if (e.target === input1) {
