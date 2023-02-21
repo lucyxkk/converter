@@ -53,7 +53,7 @@ function handleInput1(e) {
     
     
   } else {
-    result1 = num * rate;
+    result1 = (num * rate).toFixed(4);
   }
 
   if (e.target === input1) {
@@ -78,7 +78,7 @@ function handleInput2(e) {
     invalidClass.classList.remove("disappear");
     invalidClass.classList.add("invalid");
   } else {
-    result2 = num / rate;
+    result2 = (num / rate).toFixed(4);
   }
 
   if (e.target === input1) {
