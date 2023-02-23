@@ -53,6 +53,12 @@ function handleInput1(e) {
     
     
   } else {
+    let warningClass = document.querySelector(".img-warning");
+    warningClass.classList.remove("warning");
+    warningClass.classList.add("disappear");
+    let invalidClass = document.querySelector(".p-invalid");
+    invalidClass.classList.remove("invalid");
+    invalidClass.classList.add("disappear");
     result1 = (num * rate).toFixed(4);
   }
 
@@ -77,7 +83,14 @@ function handleInput2(e) {
     let invalidClass = document.querySelector(".p-invalid2");
     invalidClass.classList.remove("disappear");
     invalidClass.classList.add("invalid");
+  
   } else {
+    let warningClass = document.querySelector(".img-warning2");
+    warningClass.classList.remove("warning");
+    warningClass.classList.add("disappear");
+    let invalidClass = document.querySelector(".p-invalid2");
+    invalidClass.classList.remove("invalid");
+    invalidClass.classList.add("disappear");
     result2 = (num / rate).toFixed(4);
   }
 
