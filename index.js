@@ -1,12 +1,18 @@
 const p = document.getElementById("rate");
+const url = "https://api.nbp.pl/api/exchangerates/rates/a/gbp/";
 
-fetch("https://api.nbp.pl/api/exchangerates/rates/a/gbp/")
+fetch(url)
   .then((res) => res.json())
   .then((data) => {
     rate = data.rates[0].mid;
     console.log(rate);
     p.innerHTML = "Today's exchange rate is: " + rate;
+  })
+  .catch((error) => {
+    p.innerHTML = "Failed to fetch echange rates";
   });
+ 
+
 
 let rate;
 const input1 = document.getElementById("input1");
