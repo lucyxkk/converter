@@ -11,4 +11,4 @@ Instructions:
 You can find it here:
 https://lucyxkk.github.io/converter/
 
-![](https://github.com/lucyxkk/converter/blob/main/ezgif.com-video-to-gif.gif)
+![](https://github.com/lucyxkk/converter/blob/main/gif_preview.gif)
