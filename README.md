@@ -8,6 +8,8 @@ Instructions:
 2. Converter will automatically change your number with actual exchange rate.
 3. If you enter a letter instead of a number, you will get an "Invalid input" warning
 
+Result is rounded to 4 decimal places.
+
 You can find it here:
 https://lucyxkk.github.io/converter/
 
