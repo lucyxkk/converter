@@ -24,45 +24,38 @@ fetch(url)
 
 function handleInput1(e) {
   const num = e.target.value;
-  let result1;
+  let result;
+
   if (num === "") {
     hideError(warning1);
-    result1 = "";
+    result = "";
   } else if (isNaN(num)) {
-    result1 = "";
+    result = "";
     showError(warning1);
   } else {
     hideError(warning1);
-    result1 = (num * rate).toFixed(4);
+    result = (num * rate).toFixed(4);
   }
 
-  if (e.target === input1) {
-    input2.value = result1;
-  } else {
-    input1.value = result2;
-  }
+  input2.value = result;
 }
 
 function handleInput2(e) {
   const num = e.target.value;
-  let result2;
+  let result;
 
   if (num === "") {
     hideError(warning2);
-    result2 = "";
+    result = "";
   } else if (isNaN(num)) {
-    result2 = "";
+    result = "";
     showError(warning2);
   } else {
     hideError(warning2);
-    result2 = (num / rate).toFixed(4);
+    result = (num / rate).toFixed(4);
   }
 
-  if (e.target === input1) {
-    input2.value = result1;
-  } else {
-    input1.value = result2;
-  }
+  input1.value = result;
 }
 
 function showError(warningElement) {
