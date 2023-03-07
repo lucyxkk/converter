@@ -18,22 +18,20 @@ fetch(url)
     console.log(rate);
     p.innerHTML = "Today's exchange rate is: " + rate;
   })
-  .catch((error) => {
+  .catch(() => {
     p.innerHTML = "Failed to fetch echange rates";
   });
 
 function handleInput1(e) {
   const num = e.target.value;
-  let result;
+  let result = "";
 
   if (num === "") {
-    hideError(warning1);
-    result = "";
+    hideAllErrors();
   } else if (isNaN(num)) {
-    result = "";
     showError(warning1);
   } else {
-    hideError(warning1);
+    hideAllErrors();
     result = (num * rate).toFixed(4);
   }
 
@@ -42,16 +40,14 @@ function handleInput1(e) {
 
 function handleInput2(e) {
   const num = e.target.value;
-  let result;
+  let result = "";
 
   if (num === "") {
-    hideError(warning2);
-    result = "";
+    hideAllErrors();
   } else if (isNaN(num)) {
-    result = "";
     showError(warning2);
   } else {
-    hideError(warning2);
+    hideAllErrors();
     result = (num / rate).toFixed(4);
   }
 
@@ -64,4 +60,9 @@ function showError(warningElement) {
 
 function hideError(warningElement) {
   warningElement.classList.add("disappear");
+}
+
+function hideAllErrors() {
+  hideError(warning1);
+  hideError(warning2);
 }
