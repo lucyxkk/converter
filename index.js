@@ -2,6 +2,7 @@ const p = document.getElementById("rate");
 const url = "https://api.nbp.pl/api/exchangerates/rates/a/gbp/";
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
+const roundDecimalPlaces = 4;
 
 let rate;
 
@@ -29,10 +30,11 @@ function handleInput1(e) {
   if (num === "") {
     hideAllErrors();
   } else if (isNaN(num)) {
+    hideError(warning2);
     showError(warning1);
   } else {
     hideAllErrors();
-    result = (num * rate).toFixed(4);
+    result = (num * rate).toFixed(roundDecimalPlaces);
   }
 
   input2.value = result;
@@ -45,10 +47,11 @@ function handleInput2(e) {
   if (num === "") {
     hideAllErrors();
   } else if (isNaN(num)) {
+    hideError(warning1);
     showError(warning2);
   } else {
     hideAllErrors();
-    result = (num / rate).toFixed(4);
+    result = (num / rate).toFixed(roundDecimalPlaces);
   }
 
   input1.value = result;
