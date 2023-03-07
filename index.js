@@ -8,6 +8,9 @@ let rate;
 input1.addEventListener("input", handleInput1);
 input2.addEventListener("input", handleInput2);
 
+const warning1 = document.getElementById("invalid-input");
+const warning2 = document.getElementById("invalid-input2");
+
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
@@ -23,13 +26,13 @@ function handleInput1(e) {
   const num = e.target.value;
   let result1;
   if (num === "") {
-    adjustClass2();
+    hideError(warning1);
     result1 = "";
   } else if (isNaN(num)) {
     result1 = "";
-    adjustClass1();
+    showError(warning1);
   } else {
-    adjustClass2();
+    hideError(warning1);
     result1 = (num * rate).toFixed(4);
   }
 
@@ -45,13 +48,13 @@ function handleInput2(e) {
   let result2;
 
   if (num === "") {
-    adjustClass4();
+    hideError(warning2);
     result2 = "";
   } else if (isNaN(num)) {
     result2 = "";
-    adjustClass3();
+    showError(warning2);
   } else {
-    adjustClass4();
+    hideError(warning2);
     result2 = (num / rate).toFixed(4);
   }
 
@@ -62,38 +65,10 @@ function handleInput2(e) {
   }
 }
 
-function adjustClass1() {
-  let warningClass = document.querySelector(".img-warning");
-  warningClass.classList.remove("disappear");
-  warningClass.classList.add("warning");
-  let invalidClass = document.querySelector(".p-invalid");
-  invalidClass.classList.remove("disappear");
-  invalidClass.classList.add("invalid");
+function showError(warningElement) {
+  warningElement.classList.remove("disappear");
 }
 
-function adjustClass2() {
-  let warningClass = document.querySelector(".img-warning");
-  warningClass.classList.remove("warning");
-  warningClass.classList.add("disappear");
-  let invalidClass = document.querySelector(".p-invalid");
-  invalidClass.classList.remove("invalid");
-  invalidClass.classList.add("disappear");
-}
-
-function adjustClass3() {
-  let warningClass = document.querySelector(".img-warning2");
-  warningClass.classList.remove("disappear");
-  warningClass.classList.add("warning");
-  let invalidClass = document.querySelector(".p-invalid2");
-  invalidClass.classList.remove("disappear");
-  invalidClass.classList.add("invalid");
-}
-
-function adjustClass4() {
-  let warningClass = document.querySelector(".img-warning2");
-  warningClass.classList.remove("warning");
-  warningClass.classList.add("disappear");
-  let invalidClass = document.querySelector(".p-invalid2");
-  invalidClass.classList.remove("invalid");
-  invalidClass.classList.add("disappear");
+function hideError(warningElement) {
+  warningElement.classList.add("disappear");
 }
