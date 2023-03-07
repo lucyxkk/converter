@@ -1,5 +1,12 @@
 const p = document.getElementById("rate");
 const url = "https://api.nbp.pl/api/exchangerates/rates/a/gbp/";
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+
+let rate;
+
+input1.addEventListener("input", handleInput1);
+input2.addEventListener("input", handleInput2);
 
 fetch(url)
   .then((res) => res.json())
@@ -11,38 +18,18 @@ fetch(url)
   .catch((error) => {
     p.innerHTML = "Failed to fetch echange rates";
   });
- 
-
-
-let rate;
-const input1 = document.getElementById("input1");
-const input2 = document.getElementById("input2");
-
-input1.addEventListener("input", handleInput1);
-input2.addEventListener("input", handleInput2);
 
 function handleInput1(e) {
   const num = e.target.value;
   let result1;
   if (num === "") {
+    adjustClass2();
     result1 = "";
   } else if (isNaN(num)) {
     result1 = "";
-    let warningClass = document.querySelector(".img-warning");
-    warningClass.classList.remove("disappear");
-    warningClass.classList.add("warning");
-    let invalidClass = document.querySelector(".p-invalid");
-    invalidClass.classList.remove("disappear");
-    invalidClass.classList.add("invalid");
-    
-    
+    adjustClass1();
   } else {
-    let warningClass = document.querySelector(".img-warning");
-    warningClass.classList.remove("warning");
-    warningClass.classList.add("disappear");
-    let invalidClass = document.querySelector(".p-invalid");
-    invalidClass.classList.remove("invalid");
-    invalidClass.classList.add("disappear");
+    adjustClass2();
     result1 = (num * rate).toFixed(4);
   }
 
@@ -58,23 +45,13 @@ function handleInput2(e) {
   let result2;
 
   if (num === "") {
+    adjustClass4();
     result2 = "";
   } else if (isNaN(num)) {
     result2 = "";
-    let warningClass = document.querySelector(".img-warning2");
-    warningClass.classList.remove("disappear");
-    warningClass.classList.add("warning");
-    let invalidClass = document.querySelector(".p-invalid2");
-    invalidClass.classList.remove("disappear");
-    invalidClass.classList.add("invalid");
-  
+    adjustClass3();
   } else {
-    let warningClass = document.querySelector(".img-warning2");
-    warningClass.classList.remove("warning");
-    warningClass.classList.add("disappear");
-    let invalidClass = document.querySelector(".p-invalid2");
-    invalidClass.classList.remove("invalid");
-    invalidClass.classList.add("disappear");
+    adjustClass4();
     result2 = (num / rate).toFixed(4);
   }
 
@@ -83,4 +60,40 @@ function handleInput2(e) {
   } else {
     input1.value = result2;
   }
+}
+
+function adjustClass1() {
+  let warningClass = document.querySelector(".img-warning");
+  warningClass.classList.remove("disappear");
+  warningClass.classList.add("warning");
+  let invalidClass = document.querySelector(".p-invalid");
+  invalidClass.classList.remove("disappear");
+  invalidClass.classList.add("invalid");
+}
+
+function adjustClass2() {
+  let warningClass = document.querySelector(".img-warning");
+  warningClass.classList.remove("warning");
+  warningClass.classList.add("disappear");
+  let invalidClass = document.querySelector(".p-invalid");
+  invalidClass.classList.remove("invalid");
+  invalidClass.classList.add("disappear");
+}
+
+function adjustClass3() {
+  let warningClass = document.querySelector(".img-warning2");
+  warningClass.classList.remove("disappear");
+  warningClass.classList.add("warning");
+  let invalidClass = document.querySelector(".p-invalid2");
+  invalidClass.classList.remove("disappear");
+  invalidClass.classList.add("invalid");
+}
+
+function adjustClass4() {
+  let warningClass = document.querySelector(".img-warning2");
+  warningClass.classList.remove("warning");
+  warningClass.classList.add("disappear");
+  let invalidClass = document.querySelector(".p-invalid2");
+  invalidClass.classList.remove("invalid");
+  invalidClass.classList.add("disappear");
 }
