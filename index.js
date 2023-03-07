@@ -1,5 +1,16 @@
 const p = document.getElementById("rate");
 const url = "https://api.nbp.pl/api/exchangerates/rates/a/gbp/";
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+const roundDecimalPlaces = 4;
+
+let rate;
+
+input1.addEventListener("input", handleInput1);
+input2.addEventListener("input", handleInput2);
+
+const warning1 = document.getElementById("invalid-input");
+const warning2 = document.getElementById("invalid-input2");
 
 fetch(url)
   .then((res) => res.json())
@@ -8,79 +19,53 @@ fetch(url)
     console.log(rate);
     p.innerHTML = "Today's exchange rate is: " + rate;
   })
-  .catch((error) => {
+  .catch(() => {
     p.innerHTML = "Failed to fetch echange rates";
   });
- 
-
-
-let rate;
-const input1 = document.getElementById("input1");
-const input2 = document.getElementById("input2");
-
-input1.addEventListener("input", handleInput1);
-input2.addEventListener("input", handleInput2);
 
 function handleInput1(e) {
   const num = e.target.value;
-  let result1;
+  let result = "";
+
   if (num === "") {
-    result1 = "";
+    hideAllErrors();
   } else if (isNaN(num)) {
-    result1 = "";
-    let warningClass = document.querySelector(".img-warning");
-    warningClass.classList.remove("disappear");
-    warningClass.classList.add("warning");
-    let invalidClass = document.querySelector(".p-invalid");
-    invalidClass.classList.remove("disappear");
-    invalidClass.classList.add("invalid");
-    
-    
+    hideError(warning2);
+    showError(warning1);
   } else {
-    let warningClass = document.querySelector(".img-warning");
-    warningClass.classList.remove("warning");
-    warningClass.classList.add("disappear");
-    let invalidClass = document.querySelector(".p-invalid");
-    invalidClass.classList.remove("invalid");
-    invalidClass.classList.add("disappear");
-    result1 = (num * rate).toFixed(4);
+    hideAllErrors();
+    result = (num * rate).toFixed(roundDecimalPlaces);
   }
 
-  if (e.target === input1) {
-    input2.value = result1;
-  } else {
-    input1.value = result2;
-  }
+  input2.value = result;
 }
 
 function handleInput2(e) {
   const num = e.target.value;
-  let result2;
+  let result = "";
 
   if (num === "") {
-    result2 = "";
+    hideAllErrors();
   } else if (isNaN(num)) {
-    result2 = "";
-    let warningClass = document.querySelector(".img-warning2");
-    warningClass.classList.remove("disappear");
-    warningClass.classList.add("warning");
-    let invalidClass = document.querySelector(".p-invalid2");
-    invalidClass.classList.remove("disappear");
-    invalidClass.classList.add("invalid");
-  
+    hideError(warning1);
+    showError(warning2);
   } else {
-    let warningClass = document.querySelector(".img-warning2");
-    warningClass.classList.remove("warning");
-    warningClass.classList.add("disappear");
-    let invalidClass = document.querySelector(".p-invalid2");
-    invalidClass.classList.remove("invalid");
-    invalidClass.classList.add("disappear");
-    result2 = (num / rate).toFixed(4);
+    hideAllErrors();
+    result = (num / rate).toFixed(roundDecimalPlaces);
   }
 
-  if (e.target === input1) {
-    input2.value = result1;
-  } else {
-    input1.value = result2;
-  }
+  input1.value = result;
+}
+
+function showError(warningElement) {
+  warningElement.classList.remove("disappear");
+}
+
+function hideError(warningElement) {
+  warningElement.classList.add("disappear");
+}
+
+function hideAllErrors() {
+  hideError(warning1);
+  hideError(warning2);
 }

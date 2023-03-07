@@ -1,69 +1,54 @@
 body {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Nunito', sans-serif;
-    background-color: #F4F9F9;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Nunito", sans-serif;
+  background-color: #f4f9f9;
 }
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
 }
 
-.uk {
-    display: block;
-    position: relative;
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.flag-uk {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    left: 530px;
-    top: 23px;
+.input-container img {
+  height: 25px;
 }
 
 .arrows {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .up {
-    rotate: 180deg;
-}
-
-.pl {
-    display: block;
-}
-
-.flag-pl {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    left: 538px;
-    top: 340px;
+  rotate: 180deg;
 }
 
 input {
-    height: 40px;
-    width: 300px;
-    margin: 10px;
-    font-size: 1rem;
+  height: 40px;
+  width: 300px;
+  margin: 10px;
+  font-size: 1rem;
 }
 
 .disappear {
-    display: none;
+  display: none;
 }
 
 .invalid {
-    color: red;
-    margin-right: 150px;
-    margin-top: -24px;
+  color: red;
+  margin-right: 150px;
+  margin-top: -24px;
 }
 
 .warning {
-    margin-right: 270px;
-    margin-top: 0px;
-    width: 16px;
-    height: 16px;
+  margin-right: 270px;
+  margin-top: 0px;
+  width: 16px;
+  height: 16px;
 }
